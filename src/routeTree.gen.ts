@@ -16,9 +16,15 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const MemeIdLazyImport = createFileRoute('/$memeId')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const MemeIdLazyRoute = MemeIdLazyImport.update({
+  path: '/$memeId',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/$memeId.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
@@ -36,12 +42,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/$memeId': {
+      id: '/$memeId'
+      path: '/$memeId'
+      fullPath: '/$memeId'
+      preLoaderRoute: typeof MemeIdLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexLazyRoute,
+  MemeIdLazyRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -51,11 +67,15 @@ export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/$memeId"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/$memeId": {
+      "filePath": "$memeId.lazy.tsx"
     }
   }
 }

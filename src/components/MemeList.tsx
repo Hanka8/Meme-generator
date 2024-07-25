@@ -1,8 +1,9 @@
-import { Meme, MemeListProps } from "../types";
+// src/components/MemeList.tsx
+import React from "react";
 import { Link } from "@tanstack/react-router";
+import { Meme, MemeListProps } from "../types";
 
-function MemeList({ data, searchedMeme }: MemeListProps) {
-
+const MemeList: React.FC<MemeListProps> = ({ data, searchedMeme }) => {
   let memes: Meme[] = [];
 
   if (searchedMeme && data) {
@@ -25,7 +26,7 @@ function MemeList({ data, searchedMeme }: MemeListProps) {
           <Link
             to={`/${meme.id}`}
             className="m-5 hover:cursor-pointer transform hover:scale-105 transition duration-300 ease-in-out"
-            key={meme.id}
+            key={meme.url}
           >
             <h2 className="m-1 text-center text-xl font-semibold">
               {meme.name}
@@ -37,6 +38,6 @@ function MemeList({ data, searchedMeme }: MemeListProps) {
         ))}
     </section>
   );
-}
+};
 
 export default MemeList;

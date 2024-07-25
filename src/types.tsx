@@ -8,3 +8,7 @@ export type MemeListProps = {
   data: Meme[] | undefined;
   searchedMeme: string;
 };
+
+export type MemeFormProps = {
+  memeId: string;
+};
