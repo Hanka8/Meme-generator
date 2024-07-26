@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import MemeList from "../components/MemeList";
 import { Meme } from "../types";
 import { createLazyFileRoute } from "@tanstack/react-router";
+import Loading from "../components/Loading";
 
 // Function to fetch data from the API
 const fetchMemes = async (): Promise<Meme[]> => {
@@ -24,7 +25,7 @@ const Index: React.FC = () => {
     queryFn: fetchMemes,
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -40,7 +41,7 @@ const Index: React.FC = () => {
           type="text"
           id="search"
           placeholder="Search for a meme"
-          className="p-2 m-2 w-60 rounded text-gray-900"
+          className="p-2 m-2 w-60 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
           value={searchedMeme}
           onChange={(e) => setSearchedMeme(e.target.value)}
         />

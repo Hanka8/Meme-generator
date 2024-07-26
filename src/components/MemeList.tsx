@@ -15,7 +15,7 @@ const MemeList: React.FC<MemeListProps> = ({ data, searchedMeme }) => {
   }
 
   return (
-    <section className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 m-4 gap-4 min-h-screen">
+    <section className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center m-4 gap-4 min-h-screen">
       {memes.length === 0 && (
         <div className="flex justify-center w-full col-span-4">
           <h1 className="text-2xl">No memes found</h1>
@@ -25,7 +25,7 @@ const MemeList: React.FC<MemeListProps> = ({ data, searchedMeme }) => {
         memes.map((meme: Meme) => (
           <Link
             to={`/${meme.id}`}
-            className="m-5 hover:cursor-pointer transform hover:scale-105 transition duration-300 ease-in-out"
+            className="m-5 hover:cursor-pointer transform hover:scale-110 transition duration-300 ease-in-out"
             key={meme.url}
           >
             <h2 className="m-1 text-center text-xl font-semibold">

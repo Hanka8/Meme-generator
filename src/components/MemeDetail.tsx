@@ -1,7 +1,8 @@
 import React from "react";
-import { useParams } from "@tanstack/react-router";
+import { useParams, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Meme } from "../types";
+import { MdArrowBack } from "react-icons/md";
 import MemeForm from "./MemeForm";
 
 const MemeDetail: React.FC = () => {
@@ -29,10 +30,16 @@ const MemeDetail: React.FC = () => {
   return (
     <>
       <div className="text-orange-600 bg-gray-900 grid place-items-center">
-        <h1>{meme?.name}</h1>
-        <img className="w-64" src={meme?.url} alt={meme?.name} />
+        <Link to="/" className="m-5 text-lg flex items-center hover:underline">
+          <MdArrowBack className="m-2" />
+          go back
+        </Link>
+        <h1 className="text-xl m-5 text-4xl capitalize font-bold">
+          {meme?.name}
+        </h1>
+        <img className="w-2/5 max-w-sm" src={meme?.url} alt={meme?.name} />
       </div>
-      <MemeForm memeId={memeId} />
+      <MemeForm memeId={memeId} boxCount={meme?.box_count} />
     </>
   );
 };
