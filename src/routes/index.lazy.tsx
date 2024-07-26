@@ -30,7 +30,7 @@ const Index: React.FC = () => {
 
   return (
     <main className="text-orange-600 bg-gray-900 grid place-items-center">
-      <h1 className="text-xl m-5 text-4xl capitalize font-bold">
+      <h1 className="text-xl m-5 text-4xl capitalize font-bold gradient-text">
         meme creator
       </h1>
       <form className="m-5" onSubmit={(e) => e.preventDefault()}>

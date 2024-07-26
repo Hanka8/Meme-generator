@@ -77,7 +77,7 @@ const MemeForm: React.FC<MemeFormProps> = ({ memeId, boxCount }) => {
 
   return (
     <div className="text-orange-600 bg-gray-900 grid place-items-center">
-      <h1 className="text-xl m-5 text-4xl capitalize font-bold">
+      <h1 className="text-xl m-5 text-4xl capitalize font-bold gradient-text">
         caption meme
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">

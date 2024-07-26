@@ -34,9 +34,9 @@ const MemeDetail: React.FC = () => {
           <MdArrowBack className="m-2" />
           go back
         </Link>
-        <h1 className="text-xl m-5 text-4xl capitalize font-bold">
+        <h2 className="text-xl m-5 text-4xl capitalize font-bold gradient-text">
           {meme?.name}
-        </h1>
+        </h2>
         <img className="w-2/5 max-w-sm" src={meme?.url} alt={meme?.name} />
       </div>
       <MemeForm memeId={memeId} boxCount={meme?.box_count} />
