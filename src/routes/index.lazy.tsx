@@ -4,16 +4,7 @@ import MemeList from "../components/MemeList";
 import { Meme } from "../types";
 import { createLazyFileRoute } from "@tanstack/react-router";
 import Loading from "../components/Loading";
-
-// Function to fetch data from the API
-const fetchMemes = async (): Promise<Meme[]> => {
-  const response = await fetch("https://api.imgflip.com/get_memes");
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  const result = await response.json();
-  return result.data.memes;
-};
+import fetchMemes from "../functions/fetchMemes";
 
 const Index: React.FC = () => {
   // no free endpoint for this, so we will use the data from the API and filter them, I wont pay for memes :D
@@ -56,5 +47,3 @@ export default Index;
 export const Route = createLazyFileRoute("/")({
   component: Index,
 });
-
-// https://imgflip.com/api caption_img heslo: hesloanojenheslo
